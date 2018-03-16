@@ -101,7 +101,6 @@ public class Cacode extends ApplicationAdapter {
 			bottomTubeRectangles[i] = new Rectangle();
 
 		}
-
 	}
 
 	@Override
@@ -112,27 +111,19 @@ public class Cacode extends ApplicationAdapter {
 		if (gameState == 1) {
 
 			if (tubeX[scoringTube] < Gdx.graphics.getWidth() / 2) {
-
 				score++;
 
 				Gdx.app.log("Score", String.valueOf(score));
 
 				if (scoringTube < numberOfTubes - 1) {
-
 					scoringTube++;
-
 				} else {
-
 					scoringTube = 0;
-
 				}
-
 			}
 
 			if (Gdx.input.justTouched()) {
-
 				velocity = -20;
-
 			}
 
 			for (int i = 0; i < numberOfTubes; i++) {
@@ -143,11 +134,7 @@ public class Cacode extends ApplicationAdapter {
 					tubeOffset[i] = (randomGenerator.nextFloat() - 0.5f) * (Gdx.graphics.getHeight() - gap - 200);
 
 				} else {
-
 					tubeX[i] = tubeX[i] - tubeVelocity;
-
-
-
 				}
 
 				batch.draw(topTube, tubeX[i], Gdx.graphics.getHeight() / 2 + gap / 2 + tubeOffset[i]);
@@ -158,40 +145,27 @@ public class Cacode extends ApplicationAdapter {
 			}
 
 
-
 			if (cacodeY > 0) {
-
 				velocity = velocity + gravity;
 				cacodeY -= velocity;
 
 			} else {
-
 				gameState = 2;
-
 			}
 
 		} else if (gameState == 0) {
-
 			if (Gdx.input.justTouched()) {
-
 				gameState = 1;
-
-
 			}
 
 		} else if (gameState == 2) {
-
 			batch.draw(gameover, Gdx.graphics.getWidth() / 2 - gameover.getWidth() / 2, Gdx.graphics.getHeight() / 2 - gameover.getHeight() / 2);
-
 			if (Gdx.input.justTouched()) {
-
 				gameState = 1;
 				startGame();
 				score = 0;
 				scoringTube = 0;
 				velocity = 0;
-
-
 			}
 
 		}
@@ -206,41 +180,24 @@ public class Cacode extends ApplicationAdapter {
 			}
 		}
 
-
-
 		batch.draw(cacode[flapState], Gdx.graphics.getWidth() / 2 - cacode[flapState].getWidth() / 2, cacodeY);
 
 		font.draw(batch, String.valueOf(score), 100, 200);
 
 		birdCircle.set(Gdx.graphics.getWidth() / 2, cacodeY + cacode[flapState].getHeight() / 2, cacode[flapState].getWidth() / 2);
-
-
-
 		//shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
 		//shapeRenderer.setColor(Color.RED);
 		//shapeRenderer.circle(birdCircle.x, birdCircle.y, birdCircle.radius);
-
 		for (int i = 0; i < numberOfTubes; i++) {
-
 			//shapeRenderer.rect(tubeX[i], Gdx.graphics.getHeight() / 2 + gap / 2 + tubeOffset[i], topTube.getWidth(), topTube.getHeight());
 			//shapeRenderer.rect(tubeX[i], Gdx.graphics.getHeight() / 2 - gap / 2 - bottomTube.getHeight() + tubeOffset[i], bottomTube.getWidth(), bottomTube.getHeight());
-
-
 			if (Intersector.overlaps(birdCircle, topTubeRectangles[i]) || Intersector.overlaps(birdCircle, bottomTubeRectangles[i])) {
-
 				gameState = 2;
-
 			}
-
 		}
 
+
 		batch.end();
-
 		//shapeRenderer.end();
-
-
-
 	}
-
-
 }
