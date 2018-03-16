@@ -23,7 +23,6 @@ public class Cacode extends ApplicationAdapter {
 
 	Texture gameover;
 
-
 	Texture[] cacode;
 
 	int flapState = 0;
