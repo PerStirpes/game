@@ -64,7 +64,7 @@ public class Cacode extends ApplicationAdapter {
 		font = new BitmapFont();
 		font.setColor(Color.WHITE);
 		font.getData().setScale(10);
-		cacode = new Texture[7];
+		cacode = new Texture[8];
 
 		cacode[0] = new Texture("cacode1.png");
 		cacode[1] = new Texture("cacode2.png");
