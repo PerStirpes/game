@@ -13,7 +13,6 @@ import com.badlogic.gdx.math.Rectangle;
 import java.util.Random;
 
 
-
 public class Cacode extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture background;
@@ -187,12 +186,8 @@ public class Cacode extends ApplicationAdapter {
 		font.draw(batch, String.valueOf(score), 100, 200);
 
 		birdCircle.set(Gdx.graphics.getWidth() / 2, cacodeY + cacode[flapState].getHeight() / 2, cacode[flapState].getWidth() / 2);
-		//shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-		//shapeRenderer.setColor(Color.RED);
-		//shapeRenderer.circle(birdCircle.x, birdCircle.y, birdCircle.radius);
+
 		for (int i = 0; i < numberOfTubes; i++) {
-			//shapeRenderer.rect(tubeX[i], Gdx.graphics.getHeight() / 2 + gap / 2 + tubeOffset[i], topTube.getWidth(), topTube.getHeight());
-			//shapeRenderer.rect(tubeX[i], Gdx.graphics.getHeight() / 2 - gap / 2 - bottomTube.getHeight() + tubeOffset[i], bottomTube.getWidth(), bottomTube.getHeight());
 			if (Intersector.overlaps(birdCircle, topTubeRectangles[i]) || Intersector.overlaps(birdCircle, bottomTubeRectangles[i])) {
 				gameState = 2;
 			}
@@ -200,6 +195,6 @@ public class Cacode extends ApplicationAdapter {
 
 
 		batch.end();
-		//shapeRenderer.end();
+
 	}
 }
