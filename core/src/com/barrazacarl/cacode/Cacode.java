@@ -15,6 +15,8 @@ import com.badlogic.gdx.math.Rectangle;
 
 import java.util.Random;
 
+import javax.xml.soap.Text;
+
 
 public class Cacode extends ApplicationAdapter {
 	SpriteBatch batch;
@@ -62,7 +64,7 @@ public class Cacode extends ApplicationAdapter {
 		font = new BitmapFont();
 		font.setColor(Color.WHITE);
 		font.getData().setScale(10);
-		cacode = new Texture[6];
+		cacode = new Texture[7];
 
 		cacode[0] = new Texture("cacode1.png");
 		cacode[1] = new Texture("cacode2.png");
@@ -70,6 +72,8 @@ public class Cacode extends ApplicationAdapter {
 		cacode[3] = new Texture("cacode4.png");
 		cacode[4] = new Texture("cacode5.png");
 		cacode[5] = new Texture("cacode6.png");
+		cacode[6] = new Texture("cacode7.png");
+		cacode[7] = new Texture("cacode8.png");
 
 
 		topTube = new Texture("toptube.png");
@@ -178,8 +182,12 @@ public class Cacode extends ApplicationAdapter {
 				flapState = 0;
 			}
 		}
+		if (gameState == 2){
+			batch.draw(cacode[6], Gdx.graphics.getWidth() / 2 - cacode[6].getWidth() / 2, cacodeY);
+		} else {
+			batch.draw(cacode[flapState], Gdx.graphics.getWidth() / 2 - cacode[flapState].getWidth() / 2, cacodeY);
+		}
 
-		batch.draw(cacode[flapState], Gdx.graphics.getWidth() / 2 - cacode[flapState].getWidth() / 2, cacodeY);
 
 		font.draw(batch, String.valueOf(score), 100, 200);
 
